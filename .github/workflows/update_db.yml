@@ -13,7 +13,6 @@ jobs:
           wget -nv -O GeoLite2-Country.tar.gz "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&license_key=${{ secrets.LICENSE_KEY }}&suffix=tar.gz"
           NAME=$(tar --exclude="*/*" -tf ./GeoLite2-Country.tar.gz | sed 's/.$//')
           echo $NAME | sed 's/^/NAME=/' >> $GITHUB_ENV
-          mv ./GeoLite2-Country.tar.gz ./$NAME.tar.gz
       - name: Push to git
         run: |
           git init -b download
